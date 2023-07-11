@@ -15,7 +15,7 @@ const Home = () => {
   const handleClick = () => {
     logout();
   };
-
+  //jsu a chk
   useEffect(() =>{
     const fetchUserDetails = async () =>{
       try{
