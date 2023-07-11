@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #655990;
+}
+
+.container {
+  position: relative;
+  width: 70vw;
+  height: 80vh;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+}
+
+.login,
+.signup {
+  /* position: absolute; */
+  /* top: 0;
+  left: 0; */
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  padding: 0 10px;
+}
+
+.title {
+  color: black;
+  letter-spacing: 1px;
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--mb-0-75);
+  text-align: center;
+}
+
+.input-field {
+  width: 75%;
+  height: 50px;
+  background-color: #d9d9d9;
+  margin: 0.75rem;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-field input {
+  flex: 5;
+  margin: 0 1rem;
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  color: black;
+}
+
+.button,
+.link-button {
+  border-radius: 0.5rem;
+  border: 1px solid #00e4ae;
+  background: #00e4ae;
+  color: black;
+  font-size: var(--h3-font-size);
+  padding: 0.75rem 2.5rem;
+  margin-top: 0.75rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  text-decoration: none;
+}
+
+.forgot-password-btn {
+  font-size: var(--normal-font-size);
+  letter-spacing: 1px;
+  color: black;
+  font-weight: var(--font-medium);
+  background: none;
+  border: none;
+  margin: 0.75rem 0;
+}
+
+.button:active,
+.link-button:active {
+  transform: scale(0.95);
+}
+
+.button:hover,
+.link-button:hover {
+  cursor: pointer;
+  background-color: #83e8ba;
+}
+
+.forgot-password-btn:active {
+  transform: scale(0.95);
+}
+
+.forgot-password-btn:hover {
+  cursor: pointer;
+}
+
+.account-text {
+  display: none;
+}
+
+.signup-content,
+.login-content {
+  /* position: absolute;
+  top: 0;
+  right: 0; */
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 5;
+  background-color: #423573;
+}
+
+.content {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content h1 {
+  letter-spacing: 1px;
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--mb-0-75);
+  text-align: center;
+}
+
+.content p {
+  font-size: var(--h3-font-size);
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.error-message{
+  margin-top: var(--mb-0-75);
+  color: red;
+  border-radius: 1rem;
+  border: 1px solid red;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 992px) {
+}
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #655990; */
+    /* background-color: #AC92A6; */
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .signup-content,
+  .login-content {
+    display: none;
+  }
+   
+  .login,
+  .signup {
+    background-color: #655990;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  form{
+    width: 80%;
+  }
+
+  .input-field {
+    background-color: white;
+  }
+
+  .account-text {
+    display: initial;
+    margin-top: 0.75rem;
+    font-size: var(--normal-font-size);
+    color: black;
+  }
+
+  .account-text a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  form{
+    width: 90%;
+  }
+}
+
+
+
