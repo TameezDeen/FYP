@@ -57,7 +57,9 @@ const Login = () => {
       <div className="signup-content">
         <div className="content">
           <h1>New Here?</h1>
-          <p>Create an account and discover great music</p>
+          <p>Create an account and discover great music email</p>
+          <p>email: test05@gmail.com</p>
+          <p>password: myPASSword123@</p>
           <Link
             className="link-button"
             id="signup-btn"
