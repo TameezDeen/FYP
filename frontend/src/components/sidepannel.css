@@ -1,9 +1,51 @@
-.panel{
+.panel {
     position: fixed;
     left: 0;
     top: 20px;
     bottom: 20px;
     margin: 0 10px;
-    background: #3B2C72;
-    width: 200px;
-}
+    background: #3b2c72;
+    width: 20vw;
+    border-radius: 4rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 228, 174, 0.5);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 60%;
+    margin: auto;
+    display: block;
+  }
+  
+  .greetings1,
+  .app-name {
+    margin-top: var(--mb-0-5);
+    font-size: 2.25rem;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .app-name {
+    color: #00e4ae;
+    font-weight: bold;
+  }
+  
+  .greetings2 {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  

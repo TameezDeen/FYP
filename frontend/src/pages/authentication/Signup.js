@@ -24,6 +24,8 @@ const Signup = () => {
         <div className="content">
           <h1>Already Registered?</h1>
           <p>Login and continue your experience.</p>
+          <p>email: test07@gmail.com</p>
+          <p>password: myPASSword123@</p>
           <Link className="link-button" id="signup-btn" to="/login">
             Login
           </Link>

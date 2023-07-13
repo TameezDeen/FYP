@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Sidepannel />
+        <Sidepannel name = {name}/>
       </div>
       {/* If user is logged in this will show */}
       {user && (
