@@ -1,32 +1,29 @@
 button,
 .nav-section {
-    display: flex;
-    justify-content: center;
-  }
-  
-  button,
-  .nav-section a {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #eaeaea;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .nav-section a:hover {
-    background-color: #ccc;
-  }
+  display: flex;
+  justify-content: center;
+}
 
-  button:hover{
-    background-color: #ccc;
-    cursor: pointer;
-  }
+button,
+.nav-section a {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #eaeaea;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
 
-  .details{
-    color: white;
-    margin-bottom: var(--mb-0-75);  
-  }
+.nav-section a:hover {
+  background-color: #ccc;
+}
 
+button:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
 
-  
+.details {
+  color: white;
+  margin-bottom: var(--mb-0-75);
+}

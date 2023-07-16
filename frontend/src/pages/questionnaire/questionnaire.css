@@ -1,0 +1,43 @@
+.text1 {
+    position: fixed;
+    top: 20px;
+    left: 25vw;
+    height: 20px;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .marking-scheme {
+    position: fixed;
+    top: 100px;
+    height: auto;
+    width: auto;
+    background-color: #00e4ae;
+    left: 25vw;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+  
+  .score-list {
+    display: flex;
+    column-gap: 2rem;
+    color: black;
+    font-size: var(--h2-font-size);
+    font-weight: 500;
+  }
+  
+  .score_item{
+    text-align: center;
+  }
+  
+  
+  
+  

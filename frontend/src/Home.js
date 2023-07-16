@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import { useLogout } from "./hooks/useLogout";
 import { useAuthContext } from "./hooks/useAuthContext";
-import Sidepannel from "./components/Sidepannel";
 //
 import axios from "axios";
 
@@ -40,9 +39,6 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <Sidepannel name = {name}/>
-      </div>
       {/* If user is logged in this will show */}
       {user && (
         <div className="details">
@@ -56,6 +52,7 @@ const Home = () => {
       <div className="nav-section">
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>
+        <Link to="/questionnaire">Questionnaire</Link>
         <button className="logout-button" onClick={handleClick}>
           Logout
         </button>
