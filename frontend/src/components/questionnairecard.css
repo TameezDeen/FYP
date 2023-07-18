@@ -1,0 +1,16 @@
+.questionnaire-card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.card {
+  width: auto; 
+  height: 50px;
+  background-color: #ffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--mb-1);
+  padding: 1rem;
+  text-align: center;
+}
