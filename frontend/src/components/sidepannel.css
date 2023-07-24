@@ -57,9 +57,18 @@
   
   /* For medium devices */
   @media screen and (max-width: 768px) {
-    .panel{
-      display: none;
+    .panel {
+      width: 150px; /* Adjust the width as needed */
+      height: 50vmax; /* Adjust the height as needed */
+      top: 10px;
+      left: 10px;
+      bottom: initial;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
     }
+  
+    
   }
   
   @media screen and (max-width: 576px) {
