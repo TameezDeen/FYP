@@ -97,12 +97,40 @@ ul {
 
 /* Question Card */
 .card-container {
+  position: fixed;
   display: flex;
   align-items: center;
-  margin-left: 22vw;
+  left: 25vw;
   flex-wrap: wrap; 
-  background: #00e4ae;
+  right: 40px;
 }
+
+.next-button{
+  border-radius: 0.5rem;
+  border: 1px solid #00e4ae;
+  background: #00e4ae;
+  color: black;
+  font-size: var(--h3-font-size);
+  padding: 0.75rem 2.5rem;
+  margin-top: 0.75rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  text-decoration: none
+}
+
+.button:active,
+.next-button:active {
+  transform: scale(0.95);
+}
+
+.button:hover,
+.next-button:hover {
+  cursor: pointer;
+  background-color: #83e8ba;
+}
+
 
 /* For Extra large devices */
 @media screen and (max-width: 1200px) {

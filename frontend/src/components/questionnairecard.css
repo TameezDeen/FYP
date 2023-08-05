@@ -7,10 +7,35 @@
 .card {
   width: auto; 
   height: auto;
-  background-color: #ffff;
+  background-color: #FBFBFB;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: var(--mb-1);
   padding: 1rem;
+  font-size: 1.25rem;
   text-align: center;
+}
+.radio-buttons {
+  display: flex;
+  justify-content: space-between; /* Add this line */
+  margin-top: 0.25rem;/* Add some space between the question and the radio buttons */
+}
+
+.radio-buttons label {
+  margin: 0; /* Reset the default margin */
+  cursor: pointer;
+}
+
+/* Add some space between the radio button and the label text */
+.radio-buttons input[type="radio"]{
+  margin-right: 0.25rem;
+  cursor: pointer;
+  background-color: red;
+}
+
+/* Style the checked radio button */
+.radio-buttons input[type="radio"]:checked{
+  background-color: red; /* Change to your desired color */
+  border-color: #00e4ae; /* You can also modify the border color */
+  /* Add any other styling you want for the selected radio button */
 }

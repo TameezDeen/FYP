@@ -6,13 +6,19 @@ import axios from "axios";
 import { Data } from "../../assets/QuestionData";
 import Sidepannel from "./Sidepannel";
 
+const QuestionSet = ({ questions }) => {
+  return <QuestionnaireCard data={questions} />;
+};
+
+
 const Questionnaire = () => {
   const { user } = useAuthContext();
   const [name, setName] = useState("");
   const [panelHeight, setPanelHeight] = useState(0);
   const [markingSchemeHeight, setMarkingSchemeHeight] = useState(0);
-  //const [textHeight, setTextHeight] = useState(0);
-
+  const [textHeight, setTextHeight] = useState(0);
+  const [currentSet, setCurrentSet] = useState(1);
+  
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -49,31 +55,34 @@ const Questionnaire = () => {
     }
   };
 
-  // const updateTextHeight = () => {
-  //   const textElement = document.querySelector(".text1");
-  //   if (textElement) {
-  //     setTextHeight(textElement.offsetHeight);
-  //   }
-  // }
+  // Function to update the text height state
+  const updateTextHeight = () => {
+    const textElement = document.querySelector(".text1");
+    if (textElement) {
+      setTextHeight(textElement.offsetHeight);
+    }
+  };
+
 
   useLayoutEffect(() => {
     // Call the function on mount and whenever the window is resized
     updatePanelHeight();
     updateMarkingSchemeHeight();
-    //updateTextHeight();
+    updateTextHeight();
+
 
     //window.addEventListener("resize", updatePanelHeight);
     window.addEventListener("resize", () => {
       updatePanelHeight();
       updateMarkingSchemeHeight();
-      //updateTextHeight();
+      updateTextHeight();
     });
 
     // Clean up the event listener on unmount
     return () => {
       window.removeEventListener("resize", updatePanelHeight);
       window.removeEventListener("resize", updateMarkingSchemeHeight);
-      //window.removeEventListener("resize", updateTextHeight)
+      window.removeEventListener("resize", updateTextHeight);
     };
   }, []);
 
@@ -94,7 +103,13 @@ const Questionnaire = () => {
     text1Top = panelHeight + markingSchemeHeight + 45;
   }
 
-  //let cardContainerTop = textHeight + 22;\
+  let cardContainerTop = text1Top + textHeight + 22;
+
+  const handleNextClick = () => {
+    if (currentSet < 4) {
+      setCurrentSet((prevSet) => prevSet + 1);
+    }
+  };
 
   return (
     <div className="home-container">
@@ -136,8 +151,19 @@ const Questionnaire = () => {
       <div className="text1" style={{ top: `${text1Top}px` }}>
         <h1>I see Myself as Someone Who...</h1>
       </div>
-      <div className="card-container">
+      {/* <div className="card-container" style={{ top: `${cardContainerTop}px` }}>
         <QuestionnaireCard data={Data} />
+      </div> */}
+      <div className="card-container" style={{ top: `${cardContainerTop}px` }}>
+        {currentSet === 1 && <QuestionSet questions={Data.slice(0, 11)} />}
+        {currentSet === 2 && <QuestionSet questions={Data.slice(11, 22)} />}
+        {currentSet === 3 && <QuestionSet questions={Data.slice(22, 33)} />}
+        {currentSet === 4 && <QuestionSet questions={Data.slice(33, 44)} />}
+
+        {/* Next button */}
+        {currentSet < 4 && (
+          <button className="next-button" onClick={handleNextClick}>Next</button>
+        )}
       </div>
     </div>
   );
