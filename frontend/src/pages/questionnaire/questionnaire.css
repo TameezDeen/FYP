@@ -96,13 +96,18 @@ ul {
 }
 
 /* Question Card */
-.card-container {
+.questionnaire-container {
   position: fixed;
   display: flex;
   align-items: center;
   left: 25vw;
   flex-wrap: wrap; 
   right: 40px;
+}
+
+.card-container-next-button{
+  width: 100%;
+  text-align: center;
 }
 
 .next-button{
@@ -119,6 +124,8 @@ ul {
   transition: transform 80ms ease-in;
   text-decoration: none
 }
+
+
 
 .button:active,
 .next-button:active {
@@ -150,7 +157,7 @@ ul {
 
   /* Marking Scheme */
   .marking-scheme {
-    left: calc(25vw + 5vw);
+    left: 30vw;
     right: 20px; /* Adjust the right margin to create space from the right edge */
     justify-content: center; /* Center the items horizontally */
     padding: 0.5rem; /* Reduce the padding to make it more compact */
@@ -161,6 +168,9 @@ ul {
   .text1{
     left: calc(25vw + 5vw);
     font-size: 1rem;
+  }
+  .questionnaire-container{
+    left: 30vw;
   }
 }
 
@@ -188,7 +198,10 @@ ul {
     font-size: 1.25rem; /* Reduce the font size for smaller screens */
   }
   .text1{
-    left: calc(30vw + 5vw);
+    left: 35vw;
+  }
+  .questionnaire-container{
+    left: 35vw;
   }
 }
 
@@ -250,6 +263,10 @@ ul {
   .marking-scheme {
     display: none;
   }
+  .questionnaire-container {
+    left: 37vw;
+  }
+  
 }
 
 @media screen and (max-width: 576px) {
@@ -293,6 +310,9 @@ ul {
   .text1{
     left: 20px;
     font-size: 0.75rem;
+  }
+  .questionnaire-container {
+    left: 20px;
   }
 }
 
