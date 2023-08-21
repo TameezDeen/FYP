@@ -7,6 +7,7 @@ import Home from "./Home";
 import Login from "./pages/authentication/Login";
 import Signup from "./pages/authentication/Signup";
 import Questionnaire from "./pages/questionnaire/Questionnaire";
+import SongsPage from "./pages/main/SongsPage";
 
 function App() {
   const { user } = useAuthContext();
@@ -27,11 +28,12 @@ function App() {
               path="/signup"
               element={!user ? <Signup /> : <Navigate to="/" />}
             />
-
             <Route
               path="/questionnaire"
-              element=<Questionnaire />
-            />
+              element=<Questionnaire /> />
+            <Route
+            path="/songspage"
+            element =<SongsPage/> />
           </Routes>
         </div>
       </BrowserRouter>

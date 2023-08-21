@@ -6,21 +6,27 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Data } from "../../assets/QuestionData";
 import Sidepannel from "./Sidepannel";
-import { updatePanelHeight, updateMarkingSchemeHeight, updateTextHeight } from "./DesignFunctions";
+import {
+  updatePanelHeight,
+  updateMarkingSchemeHeight,
+  updateTextHeight,
+} from "./DesignFunctions";
 
-const QuestionSet = ({ questions }) => {
-  return <QuestionnaireCard data={questions} />;
+const QuestionSet = ({ questions, updateAnswers }) => {
+  return <QuestionnaireCard data={questions} updateAnswers={updateAnswers} />;
 };
 
 const Questionnaire = () => {
   const { user } = useAuthContext();
   const [name, setName] = useState("");
-  const [panelHeight, setPanelHeight] = useState(0);
+  const [panelHeight, setPanelHeight] = useState(0); 
   const [markingSchemeHeight, setMarkingSchemeHeight] = useState(0);
   const [textHeight, setTextHeight] = useState(0);
   const [currentSet, setCurrentSet] = useState(1);
   const navigate = useNavigate();
   const [showContinueButton, setShowContinueButton] = useState(false);
+  const [answers, setAnswers] = useState({});
+
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -31,7 +37,6 @@ const Questionnaire = () => {
               Authorization: `Bearer ${user.token}`,
             },
           });
-
           const { name } = response.data;
           setName(name);
         }
@@ -42,7 +47,6 @@ const Questionnaire = () => {
     fetchUserDetails();
   }, [user]);
 
-  
   useLayoutEffect(() => {
     // Call the function on mount and whenever the window is resized
     updatePanelHeight(setPanelHeight);
@@ -95,7 +99,7 @@ const Questionnaire = () => {
   const handleContinueClick = () => {
     setCurrentSet((prevSet) => prevSet + 1);
     setShowContinueButton(false);
-    navigate("/");
+    navigate("/songspage", { state: answers });
     console.log("Current Set after continue:", currentSet);
   };
 
@@ -107,6 +111,14 @@ const Questionnaire = () => {
     }
   }, [currentSet]);
 
+  const handleQuestionAnswer = (questionId, answer) => {
+    setAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [questionId]: answer,
+    }));
+    console.log("Answers:", answers); // Log the answers
+  };
+  
   return (
     <div className="home-container">
       <div className="sidepannel-container">
@@ -153,12 +165,12 @@ const Questionnaire = () => {
         style={{ top: `${cardContainerTop}px` }}
       >
         <div className="card-container">
-          {currentSet === 1 && <QuestionSet questions={Data.slice(0, 11)} />}
-          {currentSet === 2 && <QuestionSet questions={Data.slice(11, 22)} />}
-          {currentSet === 3 && <QuestionSet questions={Data.slice(22, 33)} />}
-          {currentSet === 4 && <QuestionSet questions={Data.slice(33, 44)} />}
+          {currentSet === 1 && <QuestionSet questions={Data.slice(0, 11)} updateAnswers={handleQuestionAnswer} />} 
+          {currentSet === 2 && <QuestionSet questions={Data.slice(11,22)} updateAnswers={handleQuestionAnswer} />}
+          {currentSet === 3 && <QuestionSet questions={Data.slice(22,33)} updateAnswers={handleQuestionAnswer} />}
+          {currentSet === 4 && <QuestionSet questions={Data.slice(33,44)} updateAnswers={handleQuestionAnswer} />}
         </div>
-        
+
         <div className="card-container-next-button">
           {/* Next button */}
           {showContinueButton && (
