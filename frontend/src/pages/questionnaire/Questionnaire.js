@@ -74,6 +74,7 @@ const Questionnaire = () => {
     markingSchemeTop = panelHeight * 1.1 + 15; // Adjust this value as needed
   }
 
+  // Calculate the top position of the marking-scheme2
   let markingScheme2Top = 20;
   if (window.innerWidth <= 768) {
     markingScheme2Top = panelHeight * 1.1; // Adjust this value as needed
@@ -87,6 +88,7 @@ const Questionnaire = () => {
 
   let cardContainerTop = text1Top + textHeight + 22;
 
+  //Function to handle the next click
   const handleNextClick = () => {
     if (currentSet < 4) {
       setCurrentSet((prevSet) => prevSet + 1);
@@ -96,9 +98,11 @@ const Questionnaire = () => {
     console.log("current set", currentSet);
   };
 
+  //Function to handle the continue click
   const handleContinueClick = () => {
     setCurrentSet((prevSet) => prevSet + 1);
     setShowContinueButton(false);
+    //send the answers to songspage
     navigate("/songspage", { state: answers });
     console.log("Current Set after continue:", currentSet);
   };
@@ -111,6 +115,7 @@ const Questionnaire = () => {
     }
   }, [currentSet]);
 
+  // Function to save the answer
   const handleQuestionAnswer = (questionId, answer) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
