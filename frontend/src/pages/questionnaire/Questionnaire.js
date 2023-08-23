@@ -11,6 +11,7 @@ import {
   updateMarkingSchemeHeight,
   updateTextHeight,
 } from "./DesignFunctions";
+import Swal from "sweetalert2";
 
 const QuestionSet = ({ questions, updateAnswers }) => {
   return <QuestionnaireCard data={questions} updateAnswers={updateAnswers} />;
@@ -88,17 +89,16 @@ const Questionnaire = () => {
   let cardContainerTop = text1Top + textHeight + 22;
 
   //Function to handle the next click
-  // const handleNextClick = () => {
-  //   if (currentSet < 4) {
-  //     setCurrentSet((prevSet) => prevSet + 1);
-  //   } else {
-  //     setShowContinueButton(true);
-  //   }
-  //   console.log("current set", currentSet);
-  // };
+  /*const handleNextClick = () => {
+    if (currentSet < 4) {
+      setCurrentSet((prevSet) => prevSet + 1);
+    } else {
+      setShowContinueButton(true);
+    }
+    console.log("current set", currentSet);
+  }; */
 
   const handleNextClick = () => {
-    // Check if all questions in the current set are answered
     const currentSetQuestions = Data.slice(
       (currentSet - 1) * 11,
       currentSet * 11
@@ -106,9 +106,12 @@ const Questionnaire = () => {
     const unansweredQuestions = currentSetQuestions.filter(
       (question) => !answers[question.id]
     );
-
     if (unansweredQuestions.length > 0) {
-      alert("Please answer all questions before proceeding.");
+      Swal.fire({
+        icon: "error",
+        text: "Please answer all questions before proceeding.",
+        confirmButtonColor: "#00e4ae",
+      });
       return;
     }
 
@@ -121,7 +124,6 @@ const Questionnaire = () => {
 
   //Function to handle the continue click
   const handleContinueClick = () => {
-    // Check if all questions in the current set are answered
     const currentSetQuestions = Data.slice(
       (currentSet - 1) * 11,
       currentSet * 11
@@ -131,7 +133,11 @@ const Questionnaire = () => {
     );
 
     if (unansweredQuestions.length > 0) {
-      alert("Please answer all questions before proceeding.");
+      Swal.fire({
+        icon: "error",
+        text: "Please answer all questions before proceeding.",
+        confirmButtonColor: "#00e4ae",
+      });
       return;
     }
 
@@ -156,8 +162,123 @@ const Questionnaire = () => {
       ...prevAnswers,
       [questionId]: answer,
     }));
-    console.log("Answers:", answers); // Log the answers
+    //console.log("Answers:", answers);
   };
+
+  //function to caluculate score
+  const calculateScores = (answers) => {
+    const scores = {
+      Extraversion: 0,
+      Neuroticism: 0,
+      Openness: 0,
+      Agreeableness: 0,
+      Conscientiousness: 0,
+    };
+
+    const reverseScoreMap = {
+      1: 5,
+      2: 4,
+      3: 3,
+      4: 2,
+      5: 1,
+    };
+
+    const reverseQuestionIds = [
+      6, 21, 31, 2, 12, 27, 37, 8, 23, 43, 9, 24, 34, 35, 41,
+    ];
+
+    for (const questionId in answers) {
+      //   const answer = answers[questionId];
+      //   const isReverse = reverseQuestionIds.includes(parseInt(questionId));
+      //   const score = isReverse ? reverseScoreMap[answer] : Number(answer);
+      //   scores.Extraversion = answers[1]+answers[6]+answers[11]+answers[16]+answers[21]+answers[26]+answers[31]+answers[36];
+      //   scores.Agreeableness = answers[2]+answers[7]+answers[12]+answers[17]+answers[22]+answers[27]+answers[32]+answers[37]+answers[42];
+      //   scores.Conscientiousness = answers[3]+answers[8]+answers[13]+answers[18]+answers[23]+answers[28]+answers[33]+answers[38]+answers[43];
+      //   scores.Neuroticism = answers[4]+answers[9]+answers[14]+answers[19]+answers[24]+answers[29]+answers[34]+answers[39];
+      //   scores.Openness = answers[5]+answers[10]+answers[15]+answers[20]+answers[25]+answers[30]+answers[35]+answers[40]+answers[41]+answers[44];
+      // }
+      // return scores;
+      const answer = answers[questionId];
+      const isReverse = reverseQuestionIds.includes(parseInt(questionId));
+      const score = isReverse ? reverseScoreMap[answer] : Number(answer);
+
+      // if (questionId <= 5) {
+      //   scores.Extraversion += score;
+      // } else if (questionId <= 10) {
+      //   scores.Agreeableness += score;
+      // } else if (questionId <= 15) {
+      //   scores.Conscientiousness += score;
+      // } else if (questionId <= 20) {
+      //   scores.Neuroticism += score;
+      // } else if (questionId <= 25) {
+      //   scores.Openness += score;
+      // }
+      if (
+        questionId == 1 ||
+        questionId == 6 ||
+        questionId == 11 ||
+        questionId == 16 ||
+        questionId == 21 ||
+        questionId == 26 ||
+        questionId == 31 ||
+        questionId == 36
+      ) {
+        scores.Extraversion += score;
+      } else if (
+        questionId == 2 ||
+        questionId == 7 ||
+        questionId == 12 ||
+        questionId == 17 ||
+        questionId == 22 ||
+        questionId == 27 ||
+        questionId == 32 ||
+        questionId == 37 ||
+        questionId == 42
+      ) {
+        scores.Agreeableness += score;
+      } else if (
+        questionId == 3 ||
+        questionId == 8 ||
+        questionId == 13 ||
+        questionId == 18 ||
+        questionId == 23 ||
+        questionId == 28 ||
+        questionId == 33 ||
+        questionId == 38 ||
+        questionId == 43
+      ) {
+        scores.Conscientiousness += score;
+      } else if (
+        questionId == 4 ||
+        questionId == 9 ||
+        questionId == 14 ||
+        questionId == 19 ||
+        questionId == 24 ||
+        questionId == 29 ||
+        questionId == 34 ||
+        questionId == 39
+      ) {
+        scores.Neuroticism += score;
+      } else if (
+        questionId == 5 ||
+        questionId == 10 ||
+        questionId == 15 ||
+        questionId == 20 ||
+        questionId == 25 ||
+        questionId == 30 ||
+        questionId == 35 ||
+        questionId == 40 ||
+        questionId == 41 ||
+        questionId == 44
+      ) {
+        scores.Openness += score;
+      }
+    }
+    return scores;
+  };
+
+  const scores = calculateScores(answers);
+  console.log(scores);
 
   return (
     <div className="home-container">
