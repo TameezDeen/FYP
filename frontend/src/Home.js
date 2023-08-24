@@ -11,6 +11,7 @@ const Home = () => {
   const { user } = useAuthContext();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [_id, setID] = useState("");
 
   const handleClick = () => {
     logout();
@@ -25,9 +26,10 @@ const Home = () => {
           },
         });
 
-        const {name, age} = response.data;
+        const {name, age, _id} = response.data;
         setName(name);
         setAge(age);
+        setID(_id);
       }catch (error){
         console.error("Error fetching user details:", error);
       }
@@ -45,6 +47,7 @@ const Home = () => {
           <h2>Email: {user.email}</h2>
           <h2>Name: {name  }</h2>
           <h2>Age: {age}</h2>
+          <h2>ID: {_id}</h2>
         </div>
       )}
 
