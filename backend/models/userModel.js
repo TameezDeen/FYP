@@ -22,6 +22,28 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  scores: {
+    Extraversion: {
+      type: Number,
+      default: 0, // You can set a default value if needed
+    },
+    Neuroticism: {
+      type: Number,
+      default: 0,
+    },
+    Openness: {
+      type: Number,
+      default: 0,
+    },
+    Agreeableness: {
+      type: Number,
+      default: 0,
+    },
+    Conscientiousness: {
+      type: Number,
+      default: 0,
+    },
+  },
 });
 
 //Static signup method

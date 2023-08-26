@@ -7,6 +7,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
+  const [showPassword, setShowPassword] = useState(false); // New state for showing/hiding password
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,11 +31,20 @@ const Login = () => {
           </div>
           <div className="input-field">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // Show text when checkbox is checked
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
+          </div>
+          {/* Checkbox to toggle show/hide password */}
+          <div className="password-checkbox">
+            <input
+              type="checkbox"
+              id="showPassword"
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="showPassword" className="show-password-text">Show Password</label>
           </div>
           <button className="forgot-password-btn" disabled={isLoading}>
             Forgot password?
@@ -58,8 +69,6 @@ const Login = () => {
         <div className="content">
           <h1>New Here?</h1>
           <p>Create an account and discover great music email</p>
-          <p>email: test05@gmail.com</p>
-          <p>password: myPASSword123@</p>
           <Link
             className="link-button"
             id="signup-btn"

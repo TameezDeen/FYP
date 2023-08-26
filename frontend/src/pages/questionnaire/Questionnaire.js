@@ -27,6 +27,7 @@ const Questionnaire = () => {
   const navigate = useNavigate();
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [answers, setAnswers] = useState({});
+  const [_id, setID] = useState("");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -37,8 +38,9 @@ const Questionnaire = () => {
               Authorization: `Bearer ${user.token}`,
             },
           });
-          const { name } = response.data;
+          const { name, _id } = response.data;
           setName(name);
+          setID(_id);  
         }
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -46,6 +48,7 @@ const Questionnaire = () => {
     };
     fetchUserDetails();
   }, [user]);
+
 
   useLayoutEffect(() => {
     // Call the function on mount and whenever the window is resized
@@ -180,7 +183,7 @@ const Questionnaire = () => {
   };
 
   const scores = calculateScores(answers);
-  
+
   const totalSum =
     scores.Extraversion +
     scores.Agreeableness +
@@ -189,10 +192,10 @@ const Questionnaire = () => {
     scores.Openness;
 
   const avgScore = totalSum / 5;
-  
-  console.log(scores);  
+
+  console.log(scores);
   console.log("Total Sum:", totalSum);
-  console.log("Average:" ,avgScore);
+  console.log("Average:", avgScore);
 
   const handleNextClick = () => {
     const currentSetQuestions = Data.slice(
@@ -219,7 +222,7 @@ const Questionnaire = () => {
   };
 
   //Function to handle the continue click
-  const handleContinueClick = () => {
+  const handleContinueClick = async () => {
     const currentSetQuestions = Data.slice(
       (currentSet - 1) * 11,
       currentSet * 11
@@ -236,12 +239,28 @@ const Questionnaire = () => {
       });
       return;
     }
-
-    setCurrentSet((prevSet) => prevSet + 1);
-    setShowContinueButton(false);
-    //send the answers to songspage
-    navigate("/songspage", { state: answers });
-    console.log("Current Set after continue:", currentSet);
+    
+    try {
+      await axios.post(
+        "/api/user/save-scores",
+        {
+          userId: _id,
+          scores: scores,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`, // Include the token here
+          },
+        }
+      );
+      setCurrentSet((prevSet) => prevSet + 1);
+      setShowContinueButton(false);
+      //send the answers to songspage
+      navigate("/songspage", { state: answers });
+      console.log("Current Set after continue:", currentSet);
+    } catch (error) {
+      console.error("Error saving scores:", error);
+    }
   };
 
   useEffect(() => {
@@ -261,8 +280,6 @@ const Questionnaire = () => {
     //console.log("Answers:", answers);
   };
 
-  
-  
   return (
     <div className="home-container">
       <div className="sidepannel-container">

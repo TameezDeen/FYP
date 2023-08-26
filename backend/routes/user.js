@@ -2,7 +2,7 @@ const express = require('express')
 const authMiddleware = require('../middleware/requireAuth')
 
 //controller functions
-const {signupUser, loginUser,getUserDetails} = require('../controllers/userController')
+const {signupUser, loginUser,getUserDetails, saveScores} = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -14,5 +14,8 @@ router.post('/signup', signupUser)
 
 //Getdetails route
 router.get('/details', authMiddleware, getUserDetails)
+
+//saveScore route
+router.post('/save-scores', authMiddleware, saveScores)
 
 module.exports = router

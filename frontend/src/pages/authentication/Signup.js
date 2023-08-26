@@ -8,8 +8,9 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+  //const [confirmPassword, setConfirmPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
+  const [showPassword, setShowPassword] = useState(false); // New state for showing/hiding password
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,8 +25,6 @@ const Signup = () => {
         <div className="content">
           <h1>Already Registered?</h1>
           <p>Login and continue your experience.</p>
-          <p>email: test07@gmail.com</p>
-          <p>password: myPASSword123@</p>
           <Link className="link-button" id="signup-btn" to="/login">
             Login
           </Link>
@@ -61,11 +60,20 @@ const Signup = () => {
           </div>
           <div className="input-field">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // Show text when checkbox is checked
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
+          </div>
+          {/* Checkbox to toggle show/hide password */}
+          <div className="password-checkbox">
+            <input
+              type="checkbox"
+              id="showPassword"
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="showPassword" className="show-password-text">Show Password</label>
           </div>
           {/* <div className="input-field">
             <input
