@@ -22,7 +22,7 @@ const Songspage = () => {
       <p>Conscientiousness: {scores.Conscientiousness}</p>
 
       <button className="next-button" onClick={goToHome}>
-        Next
+        Home
       </button>
       {/* <h2>Your Answers:</h2>
       <ul>
