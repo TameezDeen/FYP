@@ -279,11 +279,16 @@ const Questionnaire = () => {
     );
 
     console.log("Personality Traits Above Average:", aboveAverageTraits);
-
+    
+    const relatedGenres = [];
     aboveAverageTraits.forEach((trait) => {
       const relatedCategories = personalityCategoryMapping[trait];
-      const relatedGenres = relatedCategories.flatMap(
-        (category) => categoryGenreMapping[category]
+      
+      // const relatedGenres = relatedCategories.flatMap(
+      //   (category) => categoryGenreMapping[category]
+      // );
+      relatedGenres.push(
+        ...relatedCategories.flatMap((category) => categoryGenreMapping[category])
       );
 
       console.log(`Related Categories for ${trait}:`, relatedCategories);
@@ -296,7 +301,7 @@ const Questionnaire = () => {
         {
           userId: _id,
           scores: scores,
-          totalSum: totalSum, // Include the totalSum in the data
+          totalSum: totalSum,
           avgScore: avgScore,
         },
         {
@@ -314,6 +319,8 @@ const Questionnaire = () => {
           scores: scores,
           totalSum: totalSum,
           avgScore: avgScore,
+          aboveAverageTraits: aboveAverageTraits,
+          relatedGenres: relatedGenres,
         },
       });
       console.log("Current Set after continue:", currentSet);

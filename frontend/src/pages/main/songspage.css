@@ -1,0 +1,12 @@
+.genre-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Display in four columns */
+    gap: 10px;
+    padding: 0;
+  }
+  
+  .genre-list li {
+    padding: 2px;
+    border-radius: 5px;
+  }
