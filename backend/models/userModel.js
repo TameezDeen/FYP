@@ -44,6 +44,14 @@ const userSchema = new Schema({
       default: 0,
     },
   },
+  totalSum: {
+    type: Number,
+    default: 0,
+  },
+  avgScore: {
+    type: Number,
+    default: 0, 
+  }
 });
 
 //Static signup method

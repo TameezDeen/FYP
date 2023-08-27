@@ -1,17 +1,62 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.waves-image-container{
+  max-width:  100vw; /* Set the width to 100% of the viewport width */
+  overflow: hidden; /* Hide any overflow content */
+  position: relative; /* Create a positioning context for absolute positioning */
+}
+.waves__img {
+  width: 100%; /* Make the image take up the full width of the container */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any inline spacing */
+  opacity: 0.6;
+}
+.dancing-image-container {
+  max-width: 450px; /* Desired maximum width */
+  max-height: 650px; /* Desired maximum height */
+  margin: 0 auto; /* Center the image horizontally */
+  position: absolute;
+  top: 50%; /* Position the top edge at 50% of the container */
+  left: 50%; /* Position the left edge at 50% of the container */
+  transform: translate(-50%, -50%); 
+}
+
+.dancing__img{
+  width: 100%;
+  height: auto;
+}
+
+.waves__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 button,
 .nav-section {
   display: flex;
   justify-content: center;
+  
 }
 
 button,
 .nav-section a {
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: #eaeaea;
-  color: #333;
+  border-radius: 0.5rem;
+  border: 1px solid #00e4ae;
+  background: #00e4ae;
+  color: black;
+  font-size: var(--h3-font-size);
+  padding: 0.75rem 2.5rem;
+  margin-top: 0.75rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
   text-decoration: none;
-  border-radius: 5px;
 }
 
 .nav-section a:hover {
@@ -23,7 +68,3 @@ button:hover {
   cursor: pointer;
 }
 
-.details {
-  color: white;
-  margin-bottom: var(--mb-0-75);
-}

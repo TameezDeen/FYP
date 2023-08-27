@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./home.css";
-import { useLogout } from "./hooks/useLogout";
-import { useAuthContext } from "./hooks/useAuthContext";
-//
+import "./testpage.css";
+import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import axios from "axios";
-import DanceingPic from "./assets/dancingpic.png";
-import DanceingPic2 from "./assets/dancingpic2.png";
-import WavesPic from "./assets/wavespic.png";
 
-const Home = () => {
+const Testpage = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const [name, setName] = useState("");
@@ -43,14 +39,18 @@ const Home = () => {
   }, [user]);
 
   return (
-    <div className="page-container">
-      <div className="waves-image-container">
-        <img src={WavesPic} alt="" className="waves__img" />
-        <div className="dancing-image-container">
-          <img src={DanceingPic} alt="" className="dancing__img" />
+    <div>
+      {/* If user is logged in this will show */}
+      {user && (
+        <div className="details">
+          <h2>Email: {user.email}</h2>
+          <h2>Name: {name}</h2>
+          <h2>Age: {age}</h2>
+          <h2>ID: {_id}</h2>
         </div>
-      </div>
+      )}
 
+      {/* If user is not logged in we can use !user */}
       <div className="nav-section">
         <Link to="/login">Login</Link>
         <Link to="/signup">Signup</Link>
@@ -63,4 +63,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+// const Testpage = () => {
+//     return (
+//         <div>
+//         <h1>Test Page</h1></div>
+//     );
+// };
+export default Testpage;

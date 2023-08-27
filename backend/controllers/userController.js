@@ -66,12 +66,14 @@ const saveScores = async (req, res) => {
   try {
     
     const userId = req.user.id;
-    const { scores } = req.body;
+    const { scores, totalSum, avgScore} = req.body;
+  
+    console.log("Score tika", scores);
 
     // Update the user's scores in the database
     const user = await User.findByIdAndUpdate(
       userId,
-      { scores },
+      { scores, totalSum, avgScore },
       { new: true }
     );
     if (!user) {

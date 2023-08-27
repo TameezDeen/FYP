@@ -246,6 +246,8 @@ const Questionnaire = () => {
         {
           userId: _id,
           scores: scores,
+          totalSum: totalSum, // Include the totalSum in the data
+          avgScore: avgScore,
         },
         {
           headers: {
