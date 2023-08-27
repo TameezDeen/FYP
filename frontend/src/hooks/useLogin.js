@@ -20,6 +20,7 @@ export const useLogin = () => {
     if (!response.ok) {
       setIsLoading(false);
       setError(json.error);
+      return { success: false }; // Return login failure
     }
     if (response.ok) {
       //save the user to local storage
@@ -29,6 +30,7 @@ export const useLogin = () => {
       dispatch({ type: "LOGIN", payload: json });
 
       setIsLoading(false);
+      return { success: true }; 
     }
   };
 

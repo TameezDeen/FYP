@@ -12,17 +12,13 @@ import Testpage from "./pages/testpage/Testpage";
 
 function App() {
   const { user } = useAuthContext();
+  console.log("User:", user); 
   return (
     <div className="App">
       <BrowserRouter>
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
-            
-            <Route
-              path="/"
-              element={user ? <Home /> : <Navigate to="/login" />}
-            />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}

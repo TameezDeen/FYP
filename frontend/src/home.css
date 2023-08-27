@@ -3,68 +3,72 @@
   flex-direction: column;
   align-items: center;
 }
-.waves-image-container{
-  max-width:  100vw; /* Set the width to 100% of the viewport width */
-  overflow: hidden; /* Hide any overflow content */
-  position: relative; /* Create a positioning context for absolute positioning */
+.welcome-text {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+}
+.waves-image-container {
+  max-width: 100vw;
+  overflow: hidden;
+  position: relative;
 }
 .waves__img {
-  width: 100%; /* Make the image take up the full width of the container */
-  height: auto; /* Maintain the aspect ratio */
-  display: block; /* Remove any inline spacing */
+  width: 100%;
+  height: auto;
+  display: block;
   opacity: 0.6;
 }
 .dancing-image-container {
-  max-width: 450px; /* Desired maximum width */
-  max-height: 650px; /* Desired maximum height */
-  margin: 0 auto; /* Center the image horizontally */
+  max-width: 450px;
+  max-height: 650px;
+  margin: 0 auto;
   position: absolute;
-  top: 50%; /* Position the top edge at 50% of the container */
-  left: 50%; /* Position the left edge at 50% of the container */
-  transform: translate(-50%, -50%); 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.dancing__img{
+.dancing__img {
   width: 100%;
-  height: auto;
+  height: 650px;
 }
 
-.waves__img{
+.waves__img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-
-button,
-.nav-section {
+.navi-section {
   display: flex;
   justify-content: center;
-  
+  width: 100%;
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-button,
-.nav-section a {
-  border-radius: 0.5rem;
-  border: 1px solid #00e4ae;
-  background: #00e4ae;
-  color: black;
-  font-size: var(--h3-font-size);
+.navigation-button {
+  margin: 0 10px;
   padding: 0.75rem 2.5rem;
-  margin-top: 0.75rem;
-  letter-spacing: 1px;
+  border-radius: 0.5rem;
+  background-color: #00e4ae;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
-  transition: transform 80ms ease-in;
-  text-decoration: none;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
 }
 
-.nav-section a:hover {
-  background-color: #ccc;
+.navigation-button:hover {
+  background-color: #00c59e;
 }
 
-button:hover {
-  background-color: #ccc;
-  cursor: pointer;
+.navigation-button:active {
+  transform: scale(0.95);
 }
-
