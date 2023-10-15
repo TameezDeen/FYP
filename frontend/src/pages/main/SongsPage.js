@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import MainSidepannel from "./MainSidepannel"
 import "./songspage.css";
 import { useLogout } from "../../hooks/useLogout";
+import axios from "axios";
+import MusicCard from "../../components/MusicCard";
 
 const Songspage = () => {
   const location = useLocation();
+  const { user } = useAuthContext();
+  const [name, setName] = useState("");
+  const [_id, setID] = useState("");
   const {
     answers,
     scores,
@@ -22,39 +29,46 @@ const Songspage = () => {
     navigate("/");
   };
 
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        if (user) {
+          const response = await axios.get("/api/user/details", {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          });
+          const { name, _id } = response.data;
+          setName(name);
+          setID(_id);
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+    fetchUserDetails();
+  }, [user]);
+
   const handleLogoutClick = () => {
     logout();
   };
+
   // Render the answers and question IDs
   return (
-    <div>
-      {/* <h2>Perosonality Scores</h2>
-      <p>Extraversion: {scores.Extraversion}</p>
-      <p>Neuroticism: {scores.Neuroticism}</p>
-      <p>Openness: {scores.Openness}</p>
-      <p>Agreeableness: {scores.Agreeableness}</p>
-      <p>Conscientiousness: {scores.Conscientiousness}</p>
-      <p>AvgScore: {avgScore}</p>
-      <h3>Use scored high on:</h3>
-      <ul>
-        {aboveAverageTraits.map((trait) => (
-          <li key={trait}>{trait}</li>
-        ))}
-      </ul> */}
-      <h3>Music Genres that match your personality</h3>
-
-      <ul className="genre-list">
-        {[...new Set(relatedGenres)].map((genre, index) => (
-          <li key={index}>{genre}</li>
-        ))}
-      </ul>
-
-      <h3>Filtered Songs:</h3>
+    <div className="home-container">
+      <div className="sidepannel-container">
+        <MainSidepannel name={name} />
+      </div>
+      <div className="musiccard-container">
+        <MusicCard song="abc" artist="abc" cat="abc"/>
+      </div>
+      
+      {/* <h3>Filtered Songs:</h3>
       <ul>
         {filteredSongs.map((song, index) => (
           <li key={index}>{song}</li>
         ))}
-      </ul>
+      </ul> */}
 
       <button className="next-button" onClick={goToHome}>
         Home
@@ -62,17 +76,10 @@ const Songspage = () => {
       <button className="logout-button" onClick={handleLogoutClick}>
           Logout
         </button>
-      {/* <h2>Your Answers:</h2>
-      <ul>
-        {Object.keys(answers).map((questionId) => (
-          <li key={questionId}>
-            Question ID: {questionId}, Answer: {answers[questionId]}
-          </li>
-        ))}
-      </ul> */}
-      {/* Additional content for the songspage */}
+      
     </div>
   );
 };
+
 
 export default Songspage;

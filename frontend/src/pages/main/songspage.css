@@ -1,3 +1,14 @@
+.sidepannel-container {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  top: 20px;
+}
+.musiccard-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
 .genre-list {
     list-style: none;
     display: grid;

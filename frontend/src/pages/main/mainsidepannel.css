@@ -1,0 +1,132 @@
+
+.sidepanel {
+  background: #3b2c72;
+  width: 20vw;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0 4px 10px 0 rgba(0, 228, 174, 0.5);
+  display: flex;
+}
+
+.sidepannel-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.user-icon {
+  font-size: 9rem;
+  color: #00e4ae;
+  margin: 0 0.25rem;
+}
+
+.greetings1 {
+  margin-top: 1.25rem;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.app-name {
+  color: #00e4ae;
+  font-weight: bold;
+}
+
+.greetings2 {
+  font-size: 1.5rem;
+  margin: 1rem 2rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1200px) {
+  /* Side Pannel */
+  .sidepanel {
+    width: 25vw;
+  }
+  .user-icon {
+    font-size: 8rem;
+    color: #00e4ae;
+    margin: 0 0.25rem;
+  }
+
+  .greetings1 {
+    margin-top: 1rem;
+  }
+}
+
+/* For large devices */
+@media screen and (max-width: 992px) {
+  /* Side Pannel */
+  .sidepanel {
+    width: 30vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .greetings2 {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  /* Side Pannel */
+  .sidepanel {
+    width: 30vw;
+    display: flex;
+    flex-direction: column; /* Change to column to stack elements vertically */
+    align-items: center;
+    justify-content: center; 
+  }
+  .content1 {
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .user-icon {
+    font-size: 4rem;
+    margin: 0;
+    color: #00e4ae;
+  }
+  .greetings1 {
+    font-size: 1.25rem;
+    color: #ffffff;
+  }
+  .greetings2 {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Side Pannel */
+  .sidepannel-container {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    top: 20px;
+  }
+  .sidepanel{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidepannel-content {
+    margin-top: -0.5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .sidepannel-container {
+    display: none;
+  }
+}
