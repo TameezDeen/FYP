@@ -13,6 +13,7 @@ const Songspage = () => {
     avgScore,
     aboveAverageTraits,
     relatedGenres,
+    filteredSongs,
   } = location.state; // Get the passed answers from state
   const navigate = useNavigate();
   const { logout } = useLogout();
@@ -27,7 +28,7 @@ const Songspage = () => {
   // Render the answers and question IDs
   return (
     <div>
-      <h2>Perosonality Scores</h2>
+      {/* <h2>Perosonality Scores</h2>
       <p>Extraversion: {scores.Extraversion}</p>
       <p>Neuroticism: {scores.Neuroticism}</p>
       <p>Openness: {scores.Openness}</p>
@@ -39,12 +40,19 @@ const Songspage = () => {
         {aboveAverageTraits.map((trait) => (
           <li key={trait}>{trait}</li>
         ))}
-      </ul>
+      </ul> */}
       <h3>Music Genres that match your personality</h3>
 
       <ul className="genre-list">
         {[...new Set(relatedGenres)].map((genre, index) => (
           <li key={index}>{genre}</li>
+        ))}
+      </ul>
+
+      <h3>Filtered Songs:</h3>
+      <ul>
+        {filteredSongs.map((song, index) => (
+          <li key={index}>{song}</li>
         ))}
       </ul>
 

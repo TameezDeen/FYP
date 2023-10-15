@@ -57,11 +57,11 @@ const Questionnaire = () => {
 
   //Music category vs genre mapping
   const categoryGenreMapping = {
-    Mellow: ["Electronic", "Dance", "New age"],
-    Unpretentious: ["Pop", "Country", "Religious"],
-    Sophisticated: ["Blues", "Jazz", "Folk", "Classical", "Gospel"],
-    Intense: ["Rock", "Punk", "Heavy Metal"],
-    Contemporary: ["Rap", "R&B", "Reggae"],
+    Mellow: ["electronic", "dance", "new-age"],
+    Unpretentious: ["pop", "country"],
+    Sophisticated: ["blues", "jazz", "folk", "cassical", "gospel"],
+    Intense: ["rock", "punk", "heavy-metal"],
+    Contemporary: ["r-n-b", "reggae"],
   };
 
   useEffect(() => {
@@ -312,6 +312,20 @@ const Questionnaire = () => {
       );
       setCurrentSet((prevSet) => prevSet + 1);
       setShowContinueButton(false);
+
+      const response = await axios.post(
+        "/api/song/filtered-songs",
+        { selectedGenres: relatedGenres },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`
+          }
+        }
+      );
+      // Handle the response from the backend (response.data.songs contains filtered songs)
+      const filteredSongs = response.data.songs;
+      console.log('Filtered Songs:', filteredSongs);
+
       //send the answers to songspage
       navigate("/songspage", {
         state: {
@@ -321,11 +335,14 @@ const Questionnaire = () => {
           avgScore: avgScore,
           aboveAverageTraits: aboveAverageTraits,
           relatedGenres: relatedGenres,
+          filteredSongs: filteredSongs
         },
       });
+
       console.log("Current Set after continue:", currentSet);
     } catch (error) {
       console.error("Error saving scores:", error);
+      console.log("No such songs:", error);
     }
   };
 
