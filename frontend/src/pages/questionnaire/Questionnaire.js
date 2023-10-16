@@ -279,16 +279,18 @@ const Questionnaire = () => {
     );
 
     console.log("Personality Traits Above Average:", aboveAverageTraits);
-    
+
     const relatedGenres = [];
     aboveAverageTraits.forEach((trait) => {
       const relatedCategories = personalityCategoryMapping[trait];
-      
+
       // const relatedGenres = relatedCategories.flatMap(
       //   (category) => categoryGenreMapping[category]
       // );
       relatedGenres.push(
-        ...relatedCategories.flatMap((category) => categoryGenreMapping[category])
+        ...relatedCategories.flatMap(
+          (category) => categoryGenreMapping[category]
+        )
       );
 
       console.log(`Related Categories for ${trait}:`, relatedCategories);
@@ -318,13 +320,20 @@ const Questionnaire = () => {
         { selectedGenres: relatedGenres },
         {
           headers: {
-            Authorization: `Bearer ${user.token}`
-          }
+            Authorization: `Bearer ${user.token}`,
+          },
         }
       );
       // Handle the response from the backend (response.data.songs contains filtered songs)
-      const filteredSongs = response.data.songs;
-      console.log('Filtered Songs:', filteredSongs);
+      const filteredSongs = response.data.songs.map((song) => {
+        return {
+          track_id: song.track_id,
+          track_name: song.track_name,
+          artists: song.artists,
+          genre: song.genre
+        };
+      });
+      console.log("Filtered Songs:", filteredSongs);
 
       //send the answers to songspage
       navigate("/songspage", {
@@ -335,7 +344,7 @@ const Questionnaire = () => {
           avgScore: avgScore,
           aboveAverageTraits: aboveAverageTraits,
           relatedGenres: relatedGenres,
-          filteredSongs: filteredSongs
+          filteredSongs: filteredSongs,
         },
       });
 

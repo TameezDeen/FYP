@@ -8,23 +8,23 @@ import Typography from '@mui/material/Typography';
 import SongImg from "../assets/song.jpeg"
 
 
-export default function MediaCard({song, artist, cat}) {
+export default function MediaCard({track_name, artists, track_genre}) {
   return (
-    <Card sx={{ maxWidth: 200 }}>
+    <Card sx={{ maxWidth: 180 }}>
       <CardMedia
         sx={{ height:200 }}
         image={SongImg}
         title="songImage"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Song Name: {song}
+        <Typography gutterBottom variant="h6" component="div">
+          Song Name: {track_name}
         </Typography>
         <Typography variant="body2" color="text.secondary" >
-          By:{artist}
+          By:{artists}
         </Typography>
         <Typography variant="body2" color="text.secondary" >
-          Genre:{cat}
+          Genre:{track_genre}
         </Typography>
       </CardContent>
     </Card>

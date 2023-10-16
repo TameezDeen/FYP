@@ -2,7 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import MainSidepannel from "./MainSidepannel"
+import MainSidepannel from "./MainSidepannel";
 import "./songspage.css";
 import { useLogout } from "../../hooks/useLogout";
 import axios from "axios";
@@ -60,26 +60,26 @@ const Songspage = () => {
         <MainSidepannel name={name} />
       </div>
       <div className="musiccard-container">
-        <MusicCard song="abc" artist="abc" cat="abc"/>
+        <div className="musicCard">
+          {filteredSongs.map((song, index) => (
+            <MusicCard
+              key={index}
+              track_name={song.track_name}
+              artists={song.artists}
+              track_genre={song.genre}
+            />
+          ))}
+        </div>
       </div>
-      
-      {/* <h3>Filtered Songs:</h3>
-      <ul>
-        {filteredSongs.map((song, index) => (
-          <li key={index}>{song}</li>
-        ))}
-      </ul> */}
 
       <button className="next-button" onClick={goToHome}>
         Home
       </button>
       <button className="logout-button" onClick={handleLogoutClick}>
-          Logout
-        </button>
-      
+        Logout
+      </button>
     </div>
   );
 };
-
 
 export default Songspage;

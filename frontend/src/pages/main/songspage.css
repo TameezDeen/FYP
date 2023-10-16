@@ -5,19 +5,15 @@
   top: 20px;
 }
 .musiccard-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
+  position: relative;
+  top: 20px;
+  left: 12vw;
+  right: 5vw;
 }
-.genre-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Display in four columns */
-    gap: 10px;
-    padding: 0;
-  }
-  
-  .genre-list li {
-    padding: 2px;
-    border-radius: 5px;
-  }
+.musicCard {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}

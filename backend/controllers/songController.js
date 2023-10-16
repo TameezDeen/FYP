@@ -8,7 +8,12 @@ const filterSongsByGenres = (selectedGenres) => {
         .pipe(csvParser())
         .on('data', (row) => {
           if (selectedGenres.includes(row.genre)) {
-            results.push(row.track_name);
+            // results.push(row.track_name);
+            results.push({ 
+              track_id: row.track_id,
+              track_name: row.track_name, 
+              artists: row.artists, 
+              genre: row.genre});
           }
         })
         .on('end', () => {
