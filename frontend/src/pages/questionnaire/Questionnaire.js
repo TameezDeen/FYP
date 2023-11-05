@@ -57,11 +57,11 @@ const Questionnaire = () => {
 
   //Music category vs genre mapping
   const categoryGenreMapping = {
-    Mellow: ["electronic", "dance", "new-age"],
-    Unpretentious: ["pop", "country"],
-    Sophisticated: ["blues", "jazz", "folk", "cassical", "gospel"],
-    Intense: ["rock", "punk", "heavy-metal"],
-    Contemporary: ["r-n-b", "reggae"],
+    Mellow: ["Electronic", "Dance", "New_Age"],
+    Unpretentious: ["Pop", "Country"],
+    Sophisticated: ["BLues", "Jazz", "Folk", "Cassical", "Gospel"],
+    Intense: ["Rock", "Punk", "Heavy_Metal"],
+    Contemporary: ["RnB", "Reggae"],
   };
 
   useEffect(() => {
@@ -325,14 +325,23 @@ const Questionnaire = () => {
         }
       );
       // Handle the response from the backend (response.data.songs contains filtered songs)
-      const filteredSongs = response.data.songs.map((song) => {
-        return {
-          track_id: song.track_id,
-          track_name: song.track_name,
-          artists: song.artists,
-          genre: song.genre
-        };
-      });
+
+      console.log("Response from Backend:", response.data.songs);
+
+      // const filteredSongs = response.data.songs.map((song) => {
+      //   return {
+      //     track_id: song.track_id,
+      //     track_name: song.track_name,
+      //     artists: song.artists,
+      //     genre: song.genre
+      //   };
+      // });
+      const filteredSongs = [];
+
+      Object.keys(response.data.songs).forEach((genre) => {
+        filteredSongs.push(...response.data.songs[genre]);
+    });
+
       console.log("Filtered Songs:", filteredSongs);
 
       //send the answers to songspage

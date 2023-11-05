@@ -53,7 +53,7 @@ const Home = () => {
       <div className="navi-section">
         <Link className="navigation-button" to="/login">Login</Link>
         <Link className="navigation-button" to="/signup">Signup</Link>
-        <Link className="navigation-button" to="/questionnaire">Ques</Link>
+        <Link className="navigation-button" to="/questionnaire">Questionnaire</Link>
         <button className="logout-button" onClick={handleClick}>
           Logout
         </button>
