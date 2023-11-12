@@ -59,7 +59,7 @@ const Questionnaire = () => {
   const categoryGenreMapping = {
     Mellow: ["Electronic", "Dance", "New_Age"],
     Unpretentious: ["Pop", "Country"],
-    Sophisticated: ["BLues", "Jazz", "Folk", "Cassical", "Gospel"],
+    Sophisticated: ["Blues", "Jazz", "Folk", "Classical", "Gospel"],
     Intense: ["Rock", "Punk", "Heavy_Metal"],
     Contemporary: ["RnB", "Reggae"],
   };

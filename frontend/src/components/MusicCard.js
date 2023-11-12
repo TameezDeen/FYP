@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import BluesImage from "../assets/blues.png"
+import ClassicalImage from "../assets/classical.jpg"
 import CountryImage from "../assets/country.jpg"
 import DanceImage from "../assets/dance.jpg"
 import ElectronicImage from "../assets/electronic.png"
@@ -24,6 +25,7 @@ export default function MediaCard({track_name, artists, track_genre}) {
 
   const genreImages = {
     blues: BluesImage,
+    classical: ClassicalImage,
     country: CountryImage,
     dance: DanceImage,
     electronic: ElectronicImage,

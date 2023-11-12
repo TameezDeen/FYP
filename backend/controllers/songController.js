@@ -6,7 +6,7 @@ const filterSongsByGenres = (selectedGenres) => {
   return new Promise((resolve, reject) => {
       const groupedSongs = {};
 
-      fs.createReadStream('assets/testmusic.csv')
+      fs.createReadStream('assets/dataset.csv')
           .pipe(csvParser())
           .on('data', (row) => {
               if (selectedGenres.includes(row.genre)) {
