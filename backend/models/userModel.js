@@ -22,6 +22,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  languagePreference: {
+    type: String, // Adjust the type according to your needs, it can be String, Enum, etc.
+    default: "english", // Set a default value if needed
+  },
   scores: {
     Extraversion: {
       type: Number,
@@ -59,7 +63,8 @@ userSchema.statics.signup = async function (
   name,
   age,
   email,
-  password
+  password,
+  languagePreference
 ) {
   // validation
   if (!email || !password || !name || !age) {
@@ -88,7 +93,7 @@ userSchema.statics.signup = async function (
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
-  const user = await this.create({ name, age, email, password: hash });
+  const user = await this.create({ name, age, email, password: hash, languagePreference });
 
   return user;
 };

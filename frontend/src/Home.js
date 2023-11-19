@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import { useLogout } from "./hooks/useLogout";
 import { useAuthContext } from "./hooks/useAuthContext";
-//
 import axios from "axios";
 import DanceingPic from "./assets/dancingpic.png";
 import WavesPic from "./assets/wavespic.png";
@@ -11,6 +10,10 @@ import WavesPic from "./assets/wavespic.png";
 const Home = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const [name, setName] = useState("");
+  const [_id, setID] = useState("");
+  const [age, setAge]  = useState("");
+  const [lang, setLang] = useState("");
 
   const handleClick = () => {
     logout();
@@ -25,10 +28,11 @@ const Home = () => {
           },
         });
 
-        const { name, age, _id } = response.data;
-        // setName(name);
-        // setAge(age);
-        // setID(_id);
+        const { name, age, _id, lang } = response.data;
+        setName(name);
+        setAge(age);
+        setID(_id);
+        setLang(lang);
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
@@ -43,6 +47,10 @@ const Home = () => {
         <h1 className="welcome-text">
           Welcome!
         </h1>
+        <h1>Name: {name}</h1>
+        <h1>Age: {age}</h1>
+        <h1>UserID: {_id}</h1>
+        <h1>Language: {lang}</h1>
       </div>
       <div className="waves-image-container">
         <img src={WavesPic} alt="" className="waves__img" />

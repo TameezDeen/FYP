@@ -11,12 +11,13 @@ const Signup = () => {
   //const [confirmPassword, setConfirmPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
   const [showPassword, setShowPassword] = useState(false); // New state for showing/hiding password
+  const [languagePreference, setLanguagePreference] = useState("english"); // New state for language preference
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     //console.log(email, password)
-    await signup(name, age, email, password);
+    await signup(name, age, email, password, languagePreference);
   };
 
   return (
@@ -49,6 +50,27 @@ const Signup = () => {
               onChange={(e) => setAge(e.target.value)}
               value={age}
             />
+          </div>
+          <div className="langpref">
+            <span>Language Preference:</span>
+            <label>
+              <input
+                type="radio"
+                value="english"
+                checked={languagePreference === "english"}
+                onChange={() => setLanguagePreference("english")}
+              />
+              English
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="sinhala"
+                checked={languagePreference === "sinhala"}
+                onChange={() => setLanguagePreference("sinhala")}
+              />
+              Sinhala
+            </label>
           </div>
           <div className="input-field">
             <input

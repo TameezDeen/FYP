@@ -328,19 +328,11 @@ const Questionnaire = () => {
 
       console.log("Response from Backend:", response.data.songs);
 
-      // const filteredSongs = response.data.songs.map((song) => {
-      //   return {
-      //     track_id: song.track_id,
-      //     track_name: song.track_name,
-      //     artists: song.artists,
-      //     genre: song.genre
-      //   };
-      // });
       const filteredSongs = [];
 
       Object.keys(response.data.songs).forEach((genre) => {
         filteredSongs.push(...response.data.songs[genre]);
-    });
+      });
 
       console.log("Filtered Songs:", filteredSongs);
 
@@ -472,5 +464,4 @@ const Questionnaire = () => {
     </div>
   );
 };
-
 export default Questionnaire;
