@@ -47,7 +47,7 @@ const getUserDetails = async (req, res) => {
     const userId = req.user.id;
 
     // Find the user in the database based on the ID
-    const user = await User.findById(userId, "name age");
+    const user = await User.findById(userId, "name age languagePreference");
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });

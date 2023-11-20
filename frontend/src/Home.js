@@ -13,7 +13,7 @@ const Home = () => {
   const [name, setName] = useState("");
   const [_id, setID] = useState("");
   const [age, setAge]  = useState("");
-  const [lang, setLang] = useState("");
+  const [languagePreference, setLang] = useState("");
 
   const handleClick = () => {
     logout();
@@ -28,11 +28,13 @@ const Home = () => {
           },
         });
 
-        const { name, age, _id, lang } = response.data;
+        console.log(response.data)
+
+        const { name, age, _id, languagePreference } = response.data;
         setName(name);
         setAge(age);
         setID(_id);
-        setLang(lang);
+        setLang(languagePreference)
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
@@ -50,7 +52,7 @@ const Home = () => {
         <h1>Name: {name}</h1>
         <h1>Age: {age}</h1>
         <h1>UserID: {_id}</h1>
-        <h1>Language: {lang}</h1>
+        <h1>Language: {languagePreference}</h1>
       </div>
       <div className="waves-image-container">
         <img src={WavesPic} alt="" className="waves__img" />

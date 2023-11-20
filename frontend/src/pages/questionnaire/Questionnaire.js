@@ -315,6 +315,7 @@ const Questionnaire = () => {
       setCurrentSet((prevSet) => prevSet + 1);
       setShowContinueButton(false);
 
+      //API to send the related genres to backend
       const response = await axios.post(
         "/api/song/filtered-songs",
         { selectedGenres: relatedGenres },
