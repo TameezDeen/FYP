@@ -61,7 +61,7 @@ const Questionnaire = () => {
     Unpretentious: ["Pop", "Country"],
     Sophisticated: ["Blues", "Jazz", "Folk", "Classical", "Gospel"],
     Intense: ["Rock", "Punk", "Heavy_Metal"],
-    Contemporary: ["RnB", "Reggae"],
+    Contemporary: ["RnB", "Reggae", "Rap"],
   };
 
   useEffect(() => {

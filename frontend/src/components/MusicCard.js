@@ -20,6 +20,7 @@ import PunkImage from "../assets/punk.jpg"
 import RnBImage from "../assets/rnb.jpg"
 import ReggaeImage from "../assets/reggae.jpg"
 import RockImage from "../assets/rock.jpg"
+import RapImage from "../assets/rap.png"
 
 export default function MediaCard({track_name, artists, track_genre}) {
 
@@ -38,7 +39,8 @@ export default function MediaCard({track_name, artists, track_genre}) {
     punk: PunkImage,
     rnb: RnBImage,
     reggae: ReggaeImage,
-    rock: RockImage
+    rock: RockImage,
+    rap:RapImage
   };
 
 
