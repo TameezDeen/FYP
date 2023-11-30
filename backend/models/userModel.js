@@ -55,7 +55,12 @@ const userSchema = new Schema({
   avgScore: {
     type: Number,
     default: 0, 
-  }
+  }, 
+  filteredSongs: [
+    {
+      type: String, // Assuming track_id is a string, adjust if it's a different type
+    },
+  ],
 });
 
 //Static signup method
