@@ -71,13 +71,12 @@ const Songspage = () => {
           ))}
         </div>
       </div>
-
-      <button className="next-button" onClick={goToHome}>
-        Home
-      </button>
-      <button className="logout-button" onClick={handleLogoutClick}>
-        Logout
-      </button>
+  
+      <div className="button-container">
+        <button className="home-button" onClick={goToHome}>
+          Home
+        </button>
+      </div>
     </div>
   );
 };
